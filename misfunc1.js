@@ -94,7 +94,7 @@ M.mylogout = function (s_user,s_pass)   //выход и логин
 };
 
 M.getcontext=function () { // заполнение контекста
-    var cont= X.io(M.server+'ctx-rest/getContext?userId='+M.u_login_id+'&sessionId=',getcfg);
+    var cont= X.io(M.server+'ctx-rest/getContext?userId='+M.u_login_id+'%26sessionId=',getcfg);
     if (cont.responseText === undefined)
     {
         alert("Error loginmis");
