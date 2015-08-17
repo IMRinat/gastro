@@ -1,0 +1,24 @@
+
+<script>
+            var Xhr = window.XDomainRequest || window.XMLHttpRequest;
+            var xhr = new Xhr();
+
+function klik(href)
+{
+      xhr.open('GET', 'otv.php', true);
+     alert(href.getAttribute("href"));
+     
+
+
+      xhr.onload = function() {
+         var resp = xhr.responseText;        
+         alert(resp);         
+
+      };
+      xhr.onerror = function() { alert("Error"); };
+      xhr.send();
+}
+</script>
+
+<a href="ya.ru" onclick="klik(this)" >ya.ru</a><BR>
+<a href="rambler.ru" onclick="klik(this)" >rambler</a>

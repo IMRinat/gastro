@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<HTML>  <HEAD>  <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <!-- стили для кнопок-->
+    <link rel="stylesheet" href="yui/build/cssbutton/cssbutton.css">
+    <!-- общие стили-->
+    <link rel="stylesheet" href="style1.css">
+</HEAD> <BODY>
+<!-- подключаем yui -->
+<script type="application/javascript"  src="yui/build/yui/yui.js"></script>
+<!-- полезные функции общие -->
+<script type="application/javascript"  src="util1.js"></script>
+<!--список соап запросов -->
+<script type="application/javascript"  src="soaplist.js"></script>
+<!-- функции мис -->
+<script type="application/javascript"  src="misfunc1.js"></script>
+<!-- функции html -->
+<script type="application/javascript"  src="htmlfunc1.js"></script>
+<!-- функции все -->
+<script type="application/javascript"  src="func1.js"></script>
+<!-- функции yui -->
+<script type="application/javascript"  src="yuifunc1.js"></script>
+<!-- создаем yui объект и элементы-->
+<script type="application/javascript"  src="yui1.js"></script>
+
+<table border="1">
+    <tr><td> <label for="ilogin">Логин</label>  <input  id=ilogin><BR>
+             <label for="ipass">Пароль</label>  <input type="password" id=ipass>
+    </td><td>  <button id="mylogin">Обновить</button></td></tr>
+</table>
+
+<table border="1" style="width:1000px;border-collapse:collapse;border-width:0px;border:1px solid black; table-layout:auto;">
+<tr><td> <div id="userinfodiv"></div> </td></tr>
+<tr><td><font size=2>
+    <table border="1">
+        <tr><td valign="top" width=700px ><div id="tablediv" style="overflow:hidden; width:700px"></div></td>
+            <td valign="top" >
+                <table border="1">
+                    <tr><td><div id=divoldbtn></div></td></tr>
+                    <tr><td><div id=divbtn></div></td></tr>
+                    <tr><td><button id="vypbtn" class="yui3-button warning" > Выписка/перевод</button></td></tr>
+                </table>
+            </td></tr>
+    </table>
+</font></td></tr>
+</table>
+</BODY>
+</HTML>

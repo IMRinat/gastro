@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>
+        </title>
+         <script type="application/javascript"  src="yui/build/yui/yui.js"></script>
+        </script>
+    </head>
+    
+    <body class="yui3-skin-sam">
+    </body>
+    <script>
+
+
+YUI_config =
+{
+    groups:
+    {
+        gallery:
+        {
+            base    : './../../../../../../../../yui/build/',patterns:  { 'gallery-': {} }
+        }
+    }
+};
+
+
+// Create a YUI instance using the io cross-domain submodule
+YUI().use("io-xdr", function(Y) {
+    // Create a configuration object with the src property defined,
+    // src: The path to "io.swf" relative to the HTML file.
+    var xdrCfg = {
+        src:'io.swf'
+    };
+
+    // Initialize the cross-domain transport
+    Y.io.transport(xdrCfg);
+
+    // Define the configurations to be used for each transaciton..
+    var cfg = {
+      xdr: { use: 'flash'}, // Instruct io to use the flash XDR transport.
+      data: 'foo=bar&baz=boo', // Key-value string of data.
+      timeout: 3000, // Abort the transaction, if it is still pending, after 3000ms.
+      // An object passed, as an argument, to the event handlers.
+      arguments: {
+        start: 'foo',
+        complete: 'bar',
+        end: 'baz'
+      }
+    };
+
+    /*
+     * GlobalEventHandler is an example object that encapsulates
+     * event handlers for "io:start", "io:complete", and "io:end".
+     *
+     * start( ) // Event handler for "io:start"
+     * success( ) // Event handler for "io:complete".
+     * end( ) // Event handler for "io:end".
+     */
+    var GlobalEventHandler = {
+      start: function(id, args) {
+        var args = args.start // 'foo'
+      },
+      success: function(id, o, args) {
+        var args = args.complete; // 'bar'
+        var data = o.responseText;
+        var xml = o.responseXML;
+      },
+      failure: function(id, o, args) {
+        var args = args.complete; // 'bar'
+        var data = o.responseText;
+        var xml = o.responseXML;
+      },
+      end: function(id, args) {
+        var args = args.end // args = 'baz'
+      }
+    };
+
+    function callIo() {
+        //example URI.
+        var uri = "http://pipes.yahooapis.com/",
+            // Start the transaction
+            request = Y.io(uri, cfg);
+    }
+
+    // Subscribe GlobalEventHandler.start to event "io:start".
+    Y.on('io:start', GlobalEventHandler.start, Y);
+    // Subscribe GlobalEventHandler.complete to event "io:complete".
+    Y.on('io:success', GlobalEventHandler.complete, Y);
+    // Subscribe GlobalEventHandler to event "io:end".
+    Y.on('io:end', GlobalEventHandler.end, Y);
+    // Subscribe GlobalEventHandler to event "io:failure".
+    Y.on('io:failure', GlobalEventHandler.failure, Y);
+
+
+    // Once the Flash transport is initialized and ready for use,
+    // it will fire the "io:xdrReady" event.  Subscribe to it,
+    // to automatically call function "callIo" when the transport
+    // is ready..
+    Y.on('io:xdrReady', callIo, Y);
+
+
+
+    //var getcfg =  {  timeout : 3000, sync: false, arguments: { 'foo' : 'bar' }  };
+    //var res = Y.io('https://45.r-mis.ru/cases/tree',getcfg);
+
+        //example URI.
+//        var uri = "http://pipes.yahooapis.com/";
+            // Start the transaction
+        //    request = Y.io(uri, cfg);
+
+
+});
+
+
+
+    </script>
+
+</htm
