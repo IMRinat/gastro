@@ -109,21 +109,25 @@ M.getcontext=function () { // заполнение контекста
     return M.u_login_text+', '+M.u_lpu_text+', '+M.u_otdel_text+', '+M.u_name_text;
 };
 
+
+M.DoPostXmlReq= function (url,cfg)
+{
+    var resp=X.io(url,cfg);
+    var parser = new DOMParser();
+    return parser.parseFromString(resp.responseText, "application/xml");
+};
+
 M.GetZogINfo = function (id){
     postcfg.data = M.soapzoginfo.format(id);
-    var resp=X.io(M.server+'hsp-records-ws/hspRecords', postcfg);
-    return resp.responseXML;
+    return M.DoPostXmlReq(M.server+'hsp-records-ws/hspRecords', postcfg);
 };
 
 M.GetCaseINfo = function (id){
     postcfg.data = M.soapcaseinfo.format(id);
-    var resp = X.io(M.server+'cases-ws/cases', postcfg);
-    return resp.responseXML;
+    return M.DoPostXmlReq(M.server+'cases-ws/cases', postcfg);
 };
 
 M.NewUsl = function (_caseid, _id, _uslmas, _dat_ymd, _tim_hms, _res_by_login, _patuid){
     postcfg.data = M.soapnewusl.format(_caseid, _id, _uslmas, _dat_ymd, _tim_hms, _res_by_login, _patuid);
-    var resp = X.io(M.server+'medservices-ws/renderedServices', postcfg); //новая услуга
-    return resp.responseXML;
-
+    return M.DoPostXmlReq(M.server+'medservices-ws/renderedServices', postcfg); //новая услуга
 };

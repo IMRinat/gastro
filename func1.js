@@ -8,7 +8,7 @@ M.myidclick= function () {   //клик по кнопке посмотреть
 
 M.myvypklick=function () {  //клик по кнопке выписать
     var id = M.getFieldSelectRow('id');
-    window.open(M.server+'cases/record/'+id+'/edit?backUrl=%2Ftree','_blank');
+    window.open(M.serverMIS+'cases/record/'+id+'/edit?backUrl=%2Ftree','_blank');
 };
 
 M.mynewidclick=function () {   //клик по кнопке добавить

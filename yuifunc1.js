@@ -21,7 +21,7 @@ M.mydupdateklick=function () {  //клик по кнопке обновить
 
     clearObject(M.AddUsl);
     //получаем список услуг и генерируем текст с кнопками
-    var data_in = X.io(M.uslurl.format(encodeURI('врача-гастроэнтеролога стационара')), getcfg);
+    var data_in = X.io( (M.uslurl.format(encodeURIComponent(encodeURIComponent('врача-гастроэнтеролога стационара')))), getcfg);
     var arr_usl = JSON.parse(data_in.responseText);
     for (var iusl in arr_usl) {
         if (arr_usl.hasOwnProperty(iusl)) {
@@ -29,7 +29,7 @@ M.mydupdateklick=function () {  //клик по кнопке обновить
         }
     }
 
-    data_in = X.io(M.uslurl.format(encodeURI('врача-аллерголога-иммунолога стационара')), getcfg);
+    data_in = X.io((M.uslurl.format(encodeURIComponent(encodeURIComponent('врача-аллерголога-иммунолога стационара')))), getcfg);
     arr_usl = JSON.parse(data_in.responseText);
     for (iusl in arr_usl) {
         if (arr_usl.hasOwnProperty(iusl)) {
@@ -43,12 +43,10 @@ M.logoutfun= function () { //логин и обновить
     var islogin=M.mylogout(M.getusername(), M.getuserpass());
     if (islogin){
         M.setcontext(M.getcontext());
-        return;
         M.mydupdateklick();
     }
 
-M.getFieldSelectRow = function (ff)
-    {
+M.getFieldSelectRow = function (ff)  { // берем поле из таблицы в текущей строке
         var nn=( M.dtable.get('selectedRows'));
         if (nn.length==0) return null;
 

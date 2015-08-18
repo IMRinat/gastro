@@ -32,6 +32,7 @@ else {
 }
  
 //Start the Curl session
+$url = stripslashes ($url);
 $session = curl_init($url);
  
     curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
@@ -47,25 +48,28 @@ $session = curl_init($url);
     curl_setopt($session, CURLOPT_COOKIEJAR,  "cookie.txt");
 
     // If it’s a POST, put the POST data in the body
+
+    
     if ($isPost) {
-      $postvars = "";
-      foreach ($_POST as $key => $value) {
-        $postvars .= $key."=".$value."&";
-        //echo "Ключ: $key; Значение: $value<br />\n";
-      }
+      //$postvars = "";
+      //foreach ($_POST as $key => $value) { $postvars .= $key."=".$value."&";  }
       //print_r($_POST);
+      $postvars = file_get_contents('php://input');
       curl_setopt ($session, CURLOPT_POST, true);
       curl_setopt ($session, CURLOPT_POSTFIELDS, $postvars);
     }
  
 // Make the call
 $response = curl_exec($session); // remove the "\" between the "exe" and "c", this was causing issues with wordpress
+
+header("Content-Type: "."text/html;charset=UTF-8");
  
 if ($mimeType != "") {
     // The web service returns XML. Set the Content-Type appropriately
     header("Content-Type: ".$mimeType);
 }
 
+//echo $url."\n";
 echo $response;
 curl_close($session);
 } 

@@ -45,6 +45,7 @@ M.pass = "mX3Q3KK9R";
 M.proxy="http://10.14.17.31:9083/proxyabdul.php?url=";
 //M.proxy="";
 M.server = M.proxy+"https://45.r-mis.ru/";
+M.serverMIS = "https://45.r-mis.ru/";
 
 M.loginURL = M.server+'cas/login?service=https%3A%2F%2F45.r-mis.ru%2Fj_spring_cas_security_check';
 
@@ -58,9 +59,13 @@ M.zogurl =M.server+'cases/records/ajax?'+
     '%26fields=healthRecordRoot%26fields=patientId%26fields=patientLabel%26fields=healthRecordSigned%26fields=canBeRemoved';
 
 
-M.uslurl = M.server+'cases/finder?code=medicalCard.service.for.organization%26params'+
+M.uslurl0 = M.server+'cases/finder?code=medicalCard.service.for.organization%26params'+
     '={%22entityId%22%3Anull%2C%22orgId%22%3A25%2C%22resGroupId%22%3Anull%2C%22date%22%3A%22'+
     '14.11.2014%22%2C%22root%22%3Anull}%26text={0}%26page=1';
+
+M.uslurl = M.server+encodeURIComponent('cases/finder?code=medicalCard.service.for.organization&params'+
+    '={%22entityId%22%3Anull%2C%22orgId%22%3A25%2C%22resGroupId%22%3Anull%2C%22date%22%3A%22'+
+    '14.11.2014%22%2C%22root%22%3Anull}&text=')+'{0}'+encodeURIComponent('&page=1');
 
 M.uslpaturl = M.server+'cases/tree/services/jsonp?value={0}%26page=1%26start=0%26limit=25%26callback=';
 

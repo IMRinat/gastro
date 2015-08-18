@@ -35,5 +35,5 @@ M.renderbut = function (divid,ob,onklik,Y,klas){
 };
 
 M.OpenIdUsl = function (idUsl){
-    window.open('https://45.r-mis.ru/cases/service/'+ idUsl+'/edit?backUrl=%2Ftree'+ M.back1,'_blank');
+    window.open(M.serverMIS+'cases/service/'+ idUsl+'/edit?backUrl=%2Ftree'+ M.back1,'_blank');
 };

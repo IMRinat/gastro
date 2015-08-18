@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+    </title>
+  </head>
+    
+  <body>
+    <script>
+      function butklik() {
+        //alert(document.cookie);
+        var iframe = document.getElementById( 'f2' );
+var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+        alert(iframeDocument.cookie);
+       
+      } 
+    </script>
+
+    <iframe id = "f1" width="545" height="438" frameborder="0" src="http://www.youtube.com/embed/fHaAsFZL1nQ"></iframe>
+    <iframe id = "f2" width="545" height="438" frameborder="0" src="https://45.r-mis.ru"></iframe>
+    <br>
+    <button id="but1" onclick="butklik()">Get Cookie</button>
+
+  </body>
+</html>
